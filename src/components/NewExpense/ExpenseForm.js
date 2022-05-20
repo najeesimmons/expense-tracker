@@ -6,17 +6,59 @@ const ExpenseForm = () => {
   const [enteredAmount, setEnteredAmount] = useState('');
   const [enteredDate, setEnteredDate] = useState('');
 
+  const [userInput, setUserInput] = useState({
+    enteredTitle: "",
+    enteredAmount: "",
+    enteredDate: "",
+  });
+
   const titleChangeHandler = (event) => {
+    // pieces of state managed individually (MOST COMMON)
     setEnteredTitle(event.target.value);
+
+    // managing group state using spread operator (RISKY)
+    //   setUserInput({
+    //   ...userInput,
+    //   enteredTitle: event.target.value,
+    // });
+
+    // managing groupvstate using prevState (BEST PRACTICE)
+    // setUserInput((prevState) => {
+    //   return { ...prevState, enteredTitle: event.target.value };
+    // });
   };
 
   const amountChangeHandler = (event) => {
+    // pieces of state managed individually (MOST COMMON)
     setEnteredAmount(event.target.value);
+
+    // managing group state using spread operator (RISKY)
+    // setUserInput({
+    //   ...userInput,
+    //   enteredAmount: event.target.value,
+    // })
+
+    // managing group state using prevState (BEST PRACTICE)
+    // setUserInput((prevState) => {
+    //   return { ...prevState, enteredAmount: event.target.value}
+    // })
   };
 
   const dateChangeHandler = (event) => {
+    // pieces of state managed individually (MOST COMMON)
     setEnteredDate(event.target.value);
-  };
+
+    // managing group state using spread operator (RISKY)
+    //   setUserInput({
+    //     ...userInput,
+    //     enteredDate: event.target.date,
+    //   });
+
+    // managing group state using prevState (BEST PRACTICE)
+    // setUserInput((prevState) => {
+    //   return { ...prevState, enteredDate: event.target.value}
+    // })
+    };
 
   return (
     <form>
